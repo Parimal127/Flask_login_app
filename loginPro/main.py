@@ -8,10 +8,11 @@ app=Flask(__name__)
 def index():
     return render_template('login.html')
 
+#The fuction is not fully made,It authorize user but not keep him log in. 
 @app.route('/auth',methods=['GET','POST'])
 def auth():
     if request.method=='POST':
-        api_url='http://127.0.0.1:5000/info'
+        api_url='http://127.0.0.1:5000/info' #Trial on localhost
         str_data=requests.get(api_url).text
         data=json.loads(str_data)
         if request.form['userid']==data['logid'] and request.form['pass']==data['password'] :
